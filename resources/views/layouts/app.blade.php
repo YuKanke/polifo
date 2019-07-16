@@ -27,23 +27,23 @@
 
     <header class="site-header">
         <div class="site-branding">
-            <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo.png" alt="Logo"></a></h1>
+            <h1 class="site-title"><a href="index.html" rel="home"><img src="{{ asset('images/logo.png') }}" alt="Logo"></a></h1>
         </div><!-- .site-branding -->
 
         <div class="hamburger-menu">
             <div class="menu-icon">
-                <img src="images/menu-icon.png" alt="menu icon">
+                <img src="{{ asset('images/menu-icon.png') }}" alt="menu icon">
             </div><!-- .menu-icon -->
 
             <div class="menu-close-icon">
-                <img src="images/x.png" alt="menu close icon">
+                <img src="{{ asset('images/x.png') }}" alt="menu close icon">
             </div><!-- .menu-close-icon -->
         </div><!-- .hamburger-menu -->
     </header><!-- .site-header -->
 
     <nav class="site-navigation flex flex-column justify-content-between">
         <div class="site-branding d-none d-lg-block ">
-            <h1 class="site-title"><a href="index.html" rel="home"><img src="images/logo2.png" alt="Logo"></a></h1>
+            <h1 class="site-title"><a href="index.html" rel="home"><img src="{{ asset('images/logo2.png') }}" alt="Logo"></a></h1>
         </div><!-- .site-branding -->
 
         <ul class="main-menu flex flex-column justify-content-center">
@@ -57,6 +57,7 @@
                     <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 @endif
             @else
+                <li><a href="/{{Auth::id()}}">MyPage</a></li>
                 <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
