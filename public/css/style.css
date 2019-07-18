@@ -970,7 +970,8 @@ a:hover, a:active {
     border-color: #232d37;
 }
 
-.comment-form input[type="submit"] {
+.comment-form input[type="submit"],
+.comment-form button {
     padding: 18px 30px;
     margin-top: 32px;
     margin-bottom: 10px;

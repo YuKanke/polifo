@@ -19,4 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('{id}', 'UserController@index');
+Route::get('/list', 'PortfolioController@list');
+
+Route::get('/show/{id}', 'UserController@show');
+Route::get('/setting', 'UserController@setting');

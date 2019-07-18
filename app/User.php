@@ -39,7 +39,7 @@ class User extends Authenticatable
 
 
 
-    public function Portfolio(){
+    public function portfolio(){
 	    return $this->hasOne('App\Portfolio');
     }
 

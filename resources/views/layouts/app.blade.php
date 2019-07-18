@@ -20,6 +20,10 @@
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    <!-- 自作Jquery用のJquery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -47,17 +51,16 @@
         </div><!-- .site-branding -->
 
         <ul class="main-menu flex flex-column justify-content-center">
-            <li class="current-menu-item"><a href="index.html">Home</a></li>
+            <li class="current-menu-item"><a href="home">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="blog.html">Blog</a></li>
+            <li><a href="list">Portfolio</a></li>
             @guest
                 <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
                 @if (Route::has('register'))
                     <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
                 @endif
             @else
-                <li><a href="/{{Auth::id()}}">MyPage</a></li>
+                <li><a href="/setting">MyPage</a></li>
                 <li>
                     <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -89,9 +92,10 @@
         <main class="py-4">
             @yield('content')
         </main>
-
-        <script type='text/javascript' src="{{ asset('js/jquery.js') }}"></script>
-        <script type='text/javascript' src="{{ asset('js/custom.js') }}"></script>
     </div>
+    
+    <!-- JQuery -->
+    <script type='text/javascript' src="{{ asset('js/jquery.js') }}"></script>
+    <script type='text/javascript' src="{{ asset('js/custom.js') }}"></script>
 </body>
 </html>
