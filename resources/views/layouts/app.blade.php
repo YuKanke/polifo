@@ -31,7 +31,7 @@
 
     <header class="site-header">
         <div class="site-branding">
-            <h1 class="site-title"><a href="index.html" rel="home"><img src="{{ asset('images/logo.png') }}" alt="Logo"></a></h1>
+            <h1 class="site-title"><a href="list" rel="home"><img src="{{ asset('images/logo.png') }}" alt="Logo"></a></h1>
         </div><!-- .site-branding -->
 
         <div class="hamburger-menu">
@@ -47,7 +47,7 @@
 
     <nav class="site-navigation flex flex-column justify-content-between">
         <div class="site-branding d-none d-lg-block ">
-            <h1 class="site-title"><a href="index.html" rel="home"><img src="{{ asset('images/logo2.png') }}" alt="Logo"></a></h1>
+            <h1 class="site-title"><a href="list" rel="home"><img src="{{ asset('images/logo2.png') }}" alt="Logo"></a></h1>
         </div><!-- .site-branding -->
 
         <ul class="main-menu flex flex-column justify-content-center">

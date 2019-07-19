@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/list', 'PortfolioController@list');
+Route::post('/update', 'PortfolioController@update');
 
 Route::get('/show/{id}', 'UserController@show');
 Route::get('/setting', 'UserController@setting');
+
+Route::get('/getImage', 'PortfolioController@getImage');
