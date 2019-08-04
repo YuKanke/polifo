@@ -57,7 +57,7 @@
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-primary" onclick="window.open('{{$portfolio->url}}','_blank')">ページを見る</button>
                                 <button type="button" class="btn btn-primary">いいねする</button>
-                                <button type="button" class="btn btn-primary">プロフィールを見る</button>
+                                <button type="button" class="btn btn-primary" onclick="location.href='/show/{{$portfolio->user->id}}'">プロフィールを見る</button>
                             </div>
                         </div>
                     </div>
