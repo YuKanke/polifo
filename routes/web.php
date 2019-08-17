@@ -26,3 +26,5 @@ Route::get('/show/{id}', 'UserController@show');
 Route::get('/setting', 'UserController@setting');
 
 Route::get('/getImage', 'PortfolioController@getImage');
+
+Route::get('/like_api', 'PortfolioController@like_api');

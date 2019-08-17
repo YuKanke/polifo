@@ -78,4 +78,33 @@ class PortfolioController extends Controller
         $message = "更新が完了しました。";
         return redirect("/setting")->with("message", $message);
     }
+
+    public function like_api(request $request){
+        $user = User::find($request->user_id);
+        
+        if($user->id === Auth::id() && $request->portfolio_id >= 1){
+            $portfolio = Portfolio::find($request->portfolio_id);
+
+            if ($user->isNotRegisteredAsLoveReacter()) {
+                $user->registerAsLoveReacter();
+            }
+            if ($portfolio->isNotRegisteredAsLoveReactant()) {
+                $portfolio->registerAsLoveReactant();
+            }
+
+            $reacterFacade = $user->viaLoveReacter();
+            if($reacterFacade->hasReactedTo($portfolio)){
+                $reacterFacade->unreactTo($portfolio, 'Like');
+                $reactflg = false;
+            }else{
+                $reacterFacade->reactTo($portfolio, 'Like');
+                $reactflg = true;
+            }
+            
+            //$like_count = $portfolio->viaLoveReactant()->getReactionTotal()->count();
+            $like_count = $portfolio->viaLoveReactant()->getReactionCounterOfType('Like')->count;
+            return json_encode(["like_count"=>$like_count,"react_flg"=>$reactflg]);
+        }
+
+    }
 }

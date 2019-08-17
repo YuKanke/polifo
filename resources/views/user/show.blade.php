@@ -72,11 +72,10 @@
                     <div class="row">
                         <div class="offset-1 col-11">
                             <h5>いいね数</h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="offset-md-2 col-12 col-md-8">
-                            <p>999</p>
+                            <button type="submit" id="like_button">
+                                <img src="@if(Auth::user()->viaLoveReacter()->hasReactedTo($user->portfolio)){{asset('images/like_red.png')}} @else {{asset('images/like_black.png')}} @endif" id="like_img" width="50%" height="50%">
+                                <div id="like_count">{{$user->portfolio->viaLoveReactant()->getReactionCounterOfType('Like')->count}}</div>
+                            </button>
                         </div>
                     </div>
 
@@ -98,4 +97,37 @@
         
     </div><!-- .container -->
 </div><!-- .outer-container -->
+
+<script>
+$(function() {
+    $('#like_button').click(function(event){
+        var arr = location.href.split("/");
+        var portfolio_id = arr[arr.length-1];
+        $.getJSON("/like_api",{"user_id" : {{ Auth::id() }} , "portfolio_id" : portfolio_id},function(result){
+            var rows = "";
+            var colList = ["prj","pname"]
+            for (i = 0; i < result.length; i++) {
+                rows += "<tr>";
+                rows += '<td><input type="checkbox" name="project_list[]" value="' + result[i]["prj"] + '" checked="checked"> </td>';
+                for (j = 0; j < colList.length; j++) {
+                    rows += "<td>";
+                    rows += result[i][colList[j]];
+                    rows += "</td>";
+                }
+                rows += "</tr>";
+            }
+            console.log(result["react_flg"]);
+            //テーブルに作成したhtmlを追加する
+            $("#like_count").text(result["like_count"]);
+            if(result["react_flg"]){
+                $("#like_img").attr("src", "{{asset('images/like_red.png')}}");
+            }else{
+                $("#like_img").attr("src", "{{asset('images/like_black.png')}}");
+            }
+        });
+    });
+});
+</script>
+
+
 @endsection
