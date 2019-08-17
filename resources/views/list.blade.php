@@ -6,11 +6,54 @@
         <div class="row">
             <div class="col">
                 <ul class="breadcrumbs flex align-items-center">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="/home">Home</a></li>
                     <li>Portfolio</li>
                 </ul><!-- .breadcrumbs -->
             </div><!-- .col -->
         </div><!-- .row -->
+
+
+        <div class="row"><!-- 検索フォーム -->
+            <div class="col-12">
+                <div class="jumbotron">
+                    <form method="get" action="list" class="comment-form">
+                        <div class="col-12">
+                            <h4>【job】</h4>
+                        </div>
+                        <div class="offset-1 col-11">
+                            @foreach($tags as $tag)
+                                @if($tag->category === "job")
+                                    <input id={{$tag->id}} type="checkbox" name="job[]" value={{$tag->id}} @if(! empty($job)) @foreach($job as $value) @if($tag->id == $value) checked="checked" @endif @endforeach @endif>
+                                    <label for={{$tag->id}}>{{$tag->tag_name}}</label>
+                                @endif
+                            @endforeach
+                        </div>
+                        <div class="col-12">
+                            <h4>【skill】</h4>
+                        </div>
+                        <div class="offset-1 col-11">
+                            @foreach($tags as $tag)
+                                @if($tag->category === "skill")
+                                    <input id={{$tag->id}} type="checkbox" name="skill[]" value={{$tag->id}} @if(! empty($skill)) @foreach($skill as $value) @if($tag->id == $value) checked="checked" @endif @endforeach @endif>
+                                    <label for={{$tag->id}}>{{$tag->tag_name}}</label>
+                                @endif
+                            @endforeach
+                        </div>
+                        <div class="col-12">
+                            <h4>【free word】</h4>
+                        </div>
+                        <div class="offset-1 col-7">
+                            <input type="text" name="free" value="{{$free}}">
+                        </div>
+                        
+                        <div class="col-12" align="center">
+                            <input type="submit" value="検索">
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div><!-- 検索フォーム終了 -->
 
         <div class="row">
             @foreach($portfolios as $portfolio)
@@ -64,124 +107,7 @@
                 </div>
             @endforeach
 
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="portfolio-content">
-                    <figure>
-                        <img src="images/2.jpg" alt="">
-                    </figure>
-
-                    <div class="entry-content flex flex-column align-items-center justify-content-center">
-                        <h3><a href="#">Flower Skin</a></h3>
-
-                        <ul class="flex flex-wrap justify-content-center">
-                            <li><a href="#">Portfolio,</a></li>
-                            <li><a href="#">Tree</a></li>
-                        </ul>
-                    </div><!-- .entry-content -->
-                </div><!-- .portfolio-content -->
-            </div><!-- .col -->
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="portfolio-content">
-                    <figure>
-                        <img src="images/3.jpg" alt="">
-                    </figure>
-
-                    <div class="entry-content flex flex-column align-items-center justify-content-center">
-                        <h3><a href="#">Flower Skin</a></h3>
-
-                        <ul class="flex flex-wrap justify-content-center">
-                            <li><a href="#">Portfolio,</a></li>
-                            <li><a href="#">Tree</a></li>
-                        </ul>
-                    </div><!-- .entry-content -->
-                </div><!-- .portfolio-content -->
-            </div><!-- .col -->
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="portfolio-content">
-                    <figure>
-                        <img src="images/4.jpg" alt="">
-                    </figure>
-
-                    <div class="entry-content flex flex-column align-items-center justify-content-center">
-                        <h3><a href="#">Flower Skin</a></h3>
-
-                        <ul class="flex flex-wrap justify-content-center">
-                            <li><a href="#">Portfolio,</a></li>
-                            <li><a href="#">Tree</a></li>
-                        </ul>
-                    </div><!-- .entry-content -->
-                </div><!-- .portfolio-content -->
-            </div><!-- .col -->
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="portfolio-content">
-                    <figure>
-                        <img src="images/5.jpg" alt="">
-                    </figure>
-
-                    <div class="entry-content flex flex-column align-items-center justify-content-center">
-                        <h3><a href="#">Flower Skin</a></h3>
-
-                        <ul class="flex flex-wrap justify-content-center">
-                            <li><a href="#">Portfolio,</a></li>
-                            <li><a href="#">Tree</a></li>
-                        </ul>
-                    </div><!-- .entry-content -->
-                </div><!-- .portfolio-content -->
-            </div><!-- .col -->
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="portfolio-content">
-                    <figure>
-                        <img src="images/6.jpg" alt="">
-                    </figure>
-
-                    <div class="entry-content flex flex-column align-items-center justify-content-center">
-                        <h3><a href="#">Flower Skin</a></h3>
-
-                        <ul class="flex flex-wrap justify-content-center">
-                            <li><a href="#">Portfolio,</a></li>
-                            <li><a href="#">Tree</a></li>
-                        </ul>
-                    </div><!-- .entry-content -->
-                </div><!-- .portfolio-content -->
-            </div><!-- .col -->
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="portfolio-content">
-                    <figure>
-                        <img src="images/7.jpg" alt="">
-                    </figure>
-
-                    <div class="entry-content flex flex-column align-items-center justify-content-center">
-                        <h3><a href="#">Flower Skin</a></h3>
-
-                        <ul class="flex flex-wrap justify-content-center">
-                            <li><a href="#">Portfolio,</a></li>
-                            <li><a href="#">Tree</a></li>
-                        </ul>
-                    </div><!-- .entry-content -->
-                </div><!-- .portfolio-content -->
-            </div><!-- .col -->
-
-            <div class="col-12 col-md-6 col-lg-3">
-                <div class="portfolio-content">
-                    <figure>
-                        <img src="images/8.jpg" alt="">
-                    </figure>
-
-                    <div class="entry-content flex flex-column align-items-center justify-content-center">
-                        <h3><a href="#">Flower Skin</a></h3>
-
-                        <ul class="flex flex-wrap justify-content-center">
-                            <li><a href="#">Portfolio,</a></li>
-                            <li><a href="#">Tree</a></li>
-                        </ul>
-                    </div><!-- .entry-content -->
-                </div><!-- .portfolio-content -->
-            </div><!-- .col -->
+            
         </div><!-- .row -->
 
 

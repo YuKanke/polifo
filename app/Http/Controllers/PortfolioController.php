@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Portfolio;
 use App\User;
+use Illuminate\Support\Facades\Input; 
 
 class PortfolioController extends Controller
 {
@@ -29,9 +30,36 @@ class PortfolioController extends Controller
     }
 
     public function list(){
-        $portfolios = Portfolio::get();
+        $query = Portfolio::query();
+        
+        $job = Input::get('job');
+        $skill = Input::get('skill');
+        $free = Input::get('free');
 
-        return view("list", compact("portfolios"));
+        if(! empty($job) or ! empty($skill) or ! empty($free)){
+            if(! empty($job)){
+                $query->whereHas('tags', function ($query_tmp)use($job){  
+                    $query_tmp->whereIn('tags.id', $job);
+                });
+                //$query->whereIn('tag', $job);
+            }
+            if(! empty($skill)){
+                $query->whereHas('tags', function ($query_tmp)use($skill){  
+                    $query_tmp->whereIn('tags.id', $skill);
+                });
+                //$query->whereIn('tag', $skill);
+            }
+            if(! empty($free)){
+                $query->where('comment', 'like', '%' . $free . '%');
+            }
+
+            $portfolios = $query->get();
+        }else{
+            $portfolios = Portfolio::get();
+        }
+
+        $tags = \App\Tag::get();
+        return view("list", compact("portfolios", "tags", "job", "skill", "free"));
     }
 
     public function update(request $request){
