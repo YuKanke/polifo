@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $portfolio_popular = \App\Portfolio::joinReactionCounterOfType('Like')->orderBy('reaction_like_count', 'desc')->take(4)->get();
+
+        $portfolio_new = \App\Portfolio::orderBy('created_at', 'desc')->take(4)->get();
+        return view('home', compact('portfolio_popular', 'portfolio_new'));
     }
 }

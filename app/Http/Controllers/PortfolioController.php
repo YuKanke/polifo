@@ -71,9 +71,13 @@ class PortfolioController extends Controller
         $portfolio->image = $request->image;
         $portfolio->name = $request->portfolio_name;
         $portfolio->tags()->sync($request->tag);
+        $portfolio->comment = $request->comment;
 
         $user->save();
         $portfolio->save();
+        if ($portfolio->isNotRegisteredAsLoveReactant()) {
+            $portfolio->registerAsLoveReactant();
+        }
 
         $message = "更新が完了しました。";
         return redirect("/setting")->with("message", $message);

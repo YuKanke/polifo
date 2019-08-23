@@ -2,17 +2,12 @@
 
 @section('content')
 
-
- 
-
-    
-
 <div class="outer-container">
     <div class="container portfolio-page">
         <div class="row">
             <div class="col">
                 <ul class="breadcrumbs flex align-items-center">
-                    <li><a href="home">Home</a></li>
+                    <li><a href="/">Home</a></li>
                     <li>Setting</li>
                 </ul><!-- .breadcrumbs -->
             </div><!-- .col -->
@@ -57,7 +52,7 @@
                         </div>
                         <div class="row">
                             <div class="offset-md-2 col-12 col-md-8">
-                                <input type="text" name="portfolio_name" id="portfolio_name" value="@if($user->portfolio) {{ $user->portfolio->name }} @endif">
+                                <input type="text" name="portfolio_name" id="portfolio_name" value="@if($user->portfolio){{ $user->portfolio->name }}@endif">
                             </div>
                         </div>
 
@@ -68,7 +63,7 @@
                         </div>
                         <div class="row">
                             <div class="offset-md-2 col-12 col-md-6">
-                                <input type="text" name="url" id="url" value="@if($user->portfolio) {{$user->Portfolio->url}} @endif">
+                                <input type="text" name="url" id="url" value="@if($user->portfolio){{$user->Portfolio->url}}@endif">
                             </div>
                             <div class="offset-2 offset-md-0 col-8 col-md-4">
                                 <button type="button" id="getImage" class="comment-form" style="margin-top:20px;">イメージ取得</button>
@@ -123,14 +118,16 @@
                                             @break
                                     @endswitch
                                 @endforeach
-                                                
-
                             </div>
                         </div>
                         <div class="row">
-                            <div class="offset-2 col-3">
-                                <label for="like_count">
-                                <p>99</p>
+                            <div class="offset-1 col-11">
+                                <h5>プロフィール</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="offset-md-2 col-12 col-md-8">
+                                <textarea name="comment" id="comment">@if($user->portfolio){{$user->Portfolio->comment}}@endif</textarea>
                             </div>
                         </div>
                         
@@ -157,12 +154,9 @@
                 console.log("result:" + result);
                 $('#image_area').empty();
                 $('#image_area').append('<img id="image" src="' + result + '" class="img-fluid center-block">');
-                filename = result.replace('http://172.22.143.106:8000/', "");
+                filename = result.replace('http://172.22.143.102:8000/', "");
                 $('input[name="image"]').val(filename);
-                alert('success');
             });
-            
-            alert('aaa');
         });
     });
 </script>

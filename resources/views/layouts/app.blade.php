@@ -51,9 +51,9 @@
         </div><!-- .site-branding -->
 
         <ul class="main-menu flex flex-column justify-content-center">
-            <li class="current-menu-item"><a href="/home">Home</a></li>
+            <li class="current-menu-item"><a href="/">Home</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="/list">Portfolio</a></li>
+            <li><a href="/list">Portfolios</a></li>
             @guest
                 <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
                 @if (Route::has('register'))

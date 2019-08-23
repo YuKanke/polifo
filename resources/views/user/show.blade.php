@@ -6,8 +6,8 @@
         <div class="row">
             <div class="col">
                 <ul class="breadcrumbs flex align-items-center">
-                    <li><a href="/home">Home</a></li>
-                    <li>Profile</li>
+                    <li><a href="/">Home</a></li>
+                    <li>Show</li>
                 </ul><!-- .breadcrumbs -->
             </div><!-- .col -->
         </div><!-- .row -->
