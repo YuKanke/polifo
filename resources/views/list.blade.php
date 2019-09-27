@@ -80,7 +80,7 @@
 
                 <!-- モーダル -->
                 <div class="modal" id="portfolio_modal_{{$portfolio->id}}" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -90,25 +90,40 @@
                             <div class="modal-body">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-12">
+                                        <div class="col-6">
                                             <img src="{{asset($portfolio->image)}}" class="img-fluid center-block" alt="">
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <p><b>NAME：</b>{{$portfolio->name}}</p>
-                                    </div>
-                                    <div class="row">
-                                        <p><b>TAG：</b>
-                                            @foreach($portfolio->tags as $tag)
-                                                <span class="badge badge-primary">{{$tag->tag_name}}</span>
-                                            @endforeach
-                                        </p>
-                                    </div>
-                                    <div class="row">
-                                        <p><b>COMMENT：</b>{{$portfolio->comment}}</p>
-                                    </div>
-                                    <div class="row">
-                                        <p><b>LIKE：</b>{{$portfolio->viaLoveReactant()->getReactionCounterOfType('Like')->count}}</p>
+                                    
+                                        <div class="col-6">
+                                            <div class="row">
+                                                <p><b>【NAME】</b></p>
+                                            </div>
+                                            <div class="row">
+                                                <p>　　{{$portfolio->name}}</p>
+                                            </div>
+                                            <div class="row">
+                                                <p><b>【TAG】</b></p>
+                                            </div>
+                                            <div class="row">
+                                                <p>　　</p><p>
+                                                    @foreach($portfolio->tags as $tag)
+                                                        <span class="badge badge-primary">{{$tag->tag_name}}</span>
+                                                    @endforeach
+                                                </p>
+                                            </div>
+                                            <div class="row">
+                                                <p><b>【COMMENT】</b></p>
+                                            </div>
+                                            <div class="row">
+                                                <p>　　{{$portfolio->comment}}</p>
+                                            </div>
+                                            <div class="row">
+                                                <p><b>【LIKE】</b></p>
+                                            </div>
+                                            <div class="row">
+                                                <p>　　{{$portfolio->viaLoveReactant()->getReactionCounterOfType('Like')->count}}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
